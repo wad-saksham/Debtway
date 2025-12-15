@@ -149,367 +149,182 @@
     </div>
 
     <!-- User Dashboard -->
-    <div id="user-dashboard" class="dashboard hidden">
-        <aside class="sidebar">
-            <div class="sidebar-header">
-                <h1>DebtWay</h1>
-            </div>
-            
-            <nav class="sidebar-nav">
-                <a href="#" class="nav-item active" data-section="overview">
-                    <span>📊</span> Dashboard
-                </a>
-                <a href="#" class="nav-item" data-section="debts">
-                    <span>💳</span> My Debts
-                </a>
-                <a href="#" class="nav-item" data-section="payments">
-                    <span>💰</span> Payment Tracking
-                </a>
-                <a href="#" class="nav-item" data-section="documents">
-                    <span>📁</span> Document Vault
-                </a>
-                <a href="#" class="nav-item" data-section="goals">
-                    <span>🎯</span> Goal Planner
-                </a>
-                <a href="#" class="nav-item" data-section="reports">
-                    <span>📈</span> Reports
-                </a>
-                <a href="#" class="nav-item" data-section="insights">
-                    <span>🤖</span> AI Insights
-                </a>
-                <a href="#" class="nav-item" data-section="settings">
-                    <span>⚙️</span> Settings
-                </a>
-            </nav>
-            
-            <div class="sidebar-footer">
-                <button class="btn btn--outline btn--sm" onclick="logout()">Sign Out</button>
-            </div>
-        </aside>
-
-        <main class="main-content">
-            <header class="main-header">
-                <h1 id="section-title">Dashboard</h1>
-                <div class="user-info">
-                    <span id="user-greeting">Welcome back!</span>
+    <section id="user-dashboard" class="page dashboard">
+        <nav class="dashboard-nav">
+            <div class="logo">DebtWay</div>
+            <ul>
+                <li class="active"><a href="#"><i class="fas fa-home"></i> <span>Dashboard</span></a></li>
+                <li><a href="#"><i class="fas fa-file-invoice-dollar"></i> <span>Debts</span></a></li>
+                <li><a href="#"><i class="fas fa-chart-line"></i> <span>Reports</span></a></li>
+                <li><a href="#"><i class="fas fa-cog"></i> <span>Settings</span></a></li>
+            </ul>
+            <button id="user-logout-btn" class="btn btn-secondary"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></button>
+        </nav>
+        <main class="dashboard-main">
+            <header class="dashboard-header">
+                <h1>Welcome, User</h1>
+                <div class="theme-switcher">
+                    <i class="fas fa-sun"></i>
+                    <i class="fas fa-moon"></i>
                 </div>
             </header>
-
-            <div class="content-area">
-                <!-- Overview Section -->
-                <div id="overview-section" class="section active">
-                    <div class="metrics-grid">
-                        <div class="metric-card">
-                            <h3>Total Debts</h3>
-                            <div class="metric-value" id="total-debts">0</div>
-                            <div class="metric-label">Active accounts</div>
-                        </div>
-                        <div class="metric-card">
-                            <h3>Outstanding Balance</h3>
-                            <div class="metric-value" id="total-outstanding">$0</div>
-                            <div class="metric-label">Total amount owed</div>
-                        </div>
-                        <div class="metric-card">
-                            <h3>Monthly EMI</h3>
-                            <div class="metric-value" id="monthly-emi">$0</div>
-                            <div class="metric-label">Next payment due</div>
-                        </div>
-                        <div class="metric-card">
-                            <h3>Payments Made</h3>
-                            <div class="metric-value" id="payments-made">0</div>
-                            <div class="metric-label">This month</div>
-                        </div>
-                    </div>
-
-                    <div class="dashboard-charts">
-                        <div class="chart-container" style="position: relative; height: 400px;">
-                            <h3>Payment Timeline</h3>
-                            <canvas id="payment-timeline-chart"></canvas>
-                        </div>
-                        
-                        <div class="chart-container" style="position: relative; height: 400px;">
-                            <h3>Debt Distribution</h3>
-                            <div id="debt-distribution-content">
-                                <canvas id="debt-distribution-chart"></canvas>
-                                <div id="debt-empty-state" class="empty-state">
-                                    <p>Add your first debt to see the distribution chart</p>
-                                    <button class="btn btn--primary" onclick="showSection('debts')">Add Debt</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="upcoming-payments">
-                        <h3>Upcoming Payments</h3>
-                        <div id="upcoming-payments-list" class="payments-list">
-                            <div class="empty-state">
-                                <p>No upcoming payments. Add your debts to track payment schedules.</p>
-                            </div>
-                        </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="icon"><i class="fas fa-dollar-sign"></i></div>
+                    <div class="info">
+                        <h3>Total Debt</h3>
+                        <p>$12,345</p>
                     </div>
                 </div>
-
-                <!-- Other Sections -->
-                <div id="debts-section" class="section">
-                    <div class="section-header">
-                        <h2>My Debts</h2>
-                        <button class="btn btn--primary" onclick="showAddDebtModal()">Add New Debt</button>
-                    </div>
-                    <div id="debts-list" class="debts-list">
-                        <div class="empty-state">
-                            <h3>No debts added yet</h3>
-                            <p>Start by adding your first debt to track your progress</p>
-                            <button class="btn btn--primary" onclick="showAddDebtModal()">Add Your First Debt</button>
-                        </div>
+                <div class="stat-card">
+                    <div class="icon"><i class="fas fa-check-circle"></i></div>
+                    <div class="info">
+                        <h3>Debts Paid</h3>
+                        <p>5</p>
                     </div>
                 </div>
-
-                <div id="payments-section" class="section">
-                    <h2>Payment Tracking</h2>
-                    <div class="empty-state">
-                        <p>Track your debt payments here. Add debts first to start recording payments.</p>
+                <div class="stat-card">
+                    <div class="icon"><i class="fas fa-hourglass-half"></i></div>
+                    <div class="info">
+                        <h3>Pending Debts</h3>
+                        <p>3</p>
                     </div>
                 </div>
-
-                <div id="documents-section" class="section">
-                    <h2>Document Vault</h2>
-                    <div class="empty-state">
-                        <p>Securely store your loan documents and contracts here.</p>
+                <div class="stat-card">
+                    <div class="icon"><i class="fas fa-exclamation-triangle"></i></div>
+                    <div class="info">
+                        <h3>Overdue Debts</h3>
+                        <p>1</p>
                     </div>
                 </div>
-
-                <div id="goals-section" class="section">
-                    <h2>Goal Planner</h2>
-                    <div class="empty-state">
-                        <p>Set and track your debt-free goals. Create personalized payoff strategies.</p>
+            </div>
+            <div class="content-grid">
+                <div class="content-card">
+                    <h2>Recent Transactions</h2>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Creditor</th>
+                                    <th>Amount</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Credit Card Co.</td>
+                                    <td>$500.00</td>
+                                    <td>2025-11-15</td>
+                                    <td><span class="status-badge status-paid">Paid</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Student Loans</td>
+                                    <td>$1200.00</td>
+                                    <td>2025-11-10</td>
+                                    <td><span class="status-badge status-pending">Pending</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Personal Loan</td>
+                                    <td>$250.00</td>
+                                    <td>2025-10-25</td>
+                                    <td><span class="status-badge status-overdue">Overdue</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-
-                <div id="reports-section" class="section">
-                    <h2>Reports</h2>
-                    <div class="empty-state">
-                        <p>Generate detailed payment and debt reports. Add some data first to see reports.</p>
-                    </div>
-                </div>
-
-                <div id="insights-section" class="section">
-                    <h2>AI Insights</h2>
-                    <div class="empty-state">
-                        <p>Get AI-powered recommendations for your debt management strategy.</p>
-                    </div>
-                </div>
-
-                <div id="settings-section" class="section">
-                    <div class="settings-grid">
-                        <div class="card">
-                            <div class="card__header">
-                                <h3>Profile Settings</h3>
-                            </div>
-                            <div class="card__body">
-                                <div class="form-group">
-                                    <label class="form-label">Full Name</label>
-                                    <input type="text" id="profile-name" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label">Email</label>
-                                    <input type="email" id="profile-email" class="form-control">
-                                </div>
-                                <button class="btn btn--primary">Update Profile</button>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <div class="card__header">
-                                <h3>Notification Settings</h3>
-                            </div>
-                            <div class="card__body">
-                                <div class="form-group">
-                                    <label>
-                                        <input type="checkbox" checked> Payment reminders
-                                    </label>
-                                </div>
-                                <div class="form-group">
-                                    <label>
-                                        <input type="checkbox" checked> Email notifications
-                                    </label>
-                                </div>
-                                <button class="btn btn--primary">Save Settings</button>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <div class="card__header">
-                                <h3>Security Settings</h3>
-                            </div>
-                            <div class="card__body">
-                                <button class="btn btn--outline">Change Password</button>
-                                <button class="btn btn--outline">Two-Factor Authentication</button>
-                            </div>
-                        </div>
-                    </div>
+                <div class="content-card">
+                    <h2>Debt Overview</h2>
+                    <canvas id="user-debt-chart"></canvas>
                 </div>
             </div>
         </main>
-    </div>
+    </section>
 
     <!-- Admin Dashboard -->
-    <div id="admin-dashboard" class="dashboard hidden">
-        <aside class="sidebar">
-            <div class="sidebar-header">
-                <h1>DebtWay</h1>
-                <span class="admin-badge">Admin</span>
-            </div>
-            
-            <nav class="sidebar-nav">
-                <a href="#" class="nav-item active" data-section="admin-overview">
-                    <span>📊</span> System Overview
-                </a>
-                <a href="#" class="nav-item" data-section="user-management">
-                    <span>👥</span> User Management
-                </a>
-                <a href="#" class="nav-item" data-section="portfolio-analytics">
-                    <span>💼</span> Portfolio Analytics
-                </a>
-                <a href="#" class="nav-item" data-section="ai-performance">
-                    <span>🤖</span> AI Performance
-                </a>
-                <a href="#" class="nav-item" data-section="communications">
-                    <span>📧</span> Communications
-                </a>
-                <a href="#" class="nav-item" data-section="system-health">
-                    <span>🔧</span> System Health
-                </a>
-                <a href="#" class="nav-item" data-section="admin-settings">
-                    <span>⚙️</span> Settings
-                </a>
-            </nav>
-            
-            <div class="sidebar-footer">
-                <button class="btn btn--outline btn--sm" onclick="logout()">Sign Out</button>
-            </div>
-        </aside>
-
-        <main class="main-content">
-            <header class="main-header">
-                <h1 id="admin-section-title">System Overview</h1>
-                <div class="admin-info">
-                    <span>Admin Dashboard</span>
+    <section id="admin-dashboard" class="page dashboard">
+        <nav class="dashboard-nav">
+            <div class="logo">DebtWay Admin</div>
+            <ul>
+                <li class="active"><a href="#"><i class="fas fa-tachometer-alt"></i> <span>Overview</span></a></li>
+                <li><a href="#"><i class="fas fa-users"></i> <span>Users</span></a></li>
+                <li><a href="#"><i class="fas fa-file-alt"></i> <span>All Debts</span></a></li>
+                <li><a href="#"><i class="fas fa-cogs"></i> <span>System</span></a></li>
+            </ul>
+            <button id="admin-logout-btn" class="btn btn-secondary"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></button>
+        </nav>
+        <main class="dashboard-main">
+            <header class="dashboard-header">
+                <h1>Admin Panel</h1>
+                <div class="theme-switcher">
+                    <i class="fas fa-sun"></i>
+                    <i class="fas fa-moon"></i>
                 </div>
             </header>
-
-            <div class="content-area">
-                <!-- Admin Overview -->
-                <div id="admin-overview-section" class="section active">
-                    <div class="metrics-grid">
-                        <div class="metric-card">
-                            <h3>Total Users</h3>
-                            <div class="metric-value" id="admin-total-users">0</div>
-                            <div class="metric-label">Registered accounts</div>
-                        </div>
-                        <div class="metric-card">
-                            <h3>Active Portfolio</h3>
-                            <div class="metric-value" id="admin-portfolio">$0</div>
-                            <div class="metric-label">Total debt tracked</div>
-                        </div>
-                        <div class="metric-card">
-                            <h3>Active Debts</h3>
-                            <div class="metric-value" id="admin-debts">0</div>
-                            <div class="metric-label">Being tracked</div>
-                        </div>
-                        <div class="metric-card">
-                            <h3>System Health</h3>
-                            <div class="metric-value status--success">99.9%</div>
-                            <div class="metric-label">Uptime</div>
-                        </div>
-                    </div>
-
-                    <div class="dashboard-charts">
-                        <div class="chart-container" style="position: relative; height: 400px;">
-                            <h3>User Growth</h3>
-                            <canvas id="user-growth-chart"></canvas>
-                        </div>
-                        
-                        <div class="chart-container" style="position: relative; height: 400px;">
-                            <h3>Portfolio Distribution</h3>
-                            <canvas id="admin-portfolio-chart"></canvas>
-                        </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="icon"><i class="fas fa-users"></i></div>
+                    <div class="info">
+                        <h3>Total Users</h3>
+                        <p>1,234</p>
                     </div>
                 </div>
-
-                <!-- Other Admin Sections -->
-                <div id="user-management-section" class="section">
-                    <div class="section-header">
-                        <h2>User Management</h2>
-                    </div>
-                    <div id="users-table" class="users-table">
-                        <div class="empty-state">
-                            <p id="users-empty-message">Loading user data...</p>
-                        </div>
+                <div class="stat-card">
+                    <div class="icon"><i class="fas fa-file-invoice-dollar"></i></div>
+                    <div class="info">
+                        <h3>Total Debts</h3>
+                        <p>5,678</p>
                     </div>
                 </div>
-
-                <div id="portfolio-analytics-section" class="section">
-                    <h2>Portfolio Analytics</h2>
-                    <div class="analytics-content">
-                        <p>Real-time portfolio performance and debt analytics across all users.</p>
+                <div class="stat-card">
+                    <div class="icon"><i class="fas fa-hand-holding-usd"></i></div>
+                    <div class="info">
+                        <h3>Total Value</h3>
+                        <p>$1.2M</p>
                     </div>
                 </div>
-
-                <div id="ai-performance-section" class="section">
-                    <h2>AI Performance</h2>
-                    <div class="ai-metrics">
-                        <p>AI model accuracy and recommendation performance metrics.</p>
+                <div class="stat-card">
+                    <div class="icon"><i class="fas fa-server"></i></div>
+                    <div class="info">
+                        <h3>Server Status</h3>
+                        <p>Online</p>
                     </div>
                 </div>
-
-                <div id="communications-section" class="section">
-                    <h2>Communications</h2>
-                    <div class="communications-tools">
-                        <p>System announcements and email template management.</p>
-                    </div>
-                </div>
-
-                <div id="system-health-section" class="section">
-                    <h2>System Health</h2>
-                    <div class="system-metrics">
-                        <p>Platform monitoring, performance metrics, and system status.</p>
-                    </div>
-                </div>
-
-                <div id="admin-settings-section" class="section">
-                    <h2>Admin Settings</h2>
-                    <div class="admin-settings-grid">
-                        <div class="card">
-                            <div class="card__header">
-                                <h3>System Configuration</h3>
-                            </div>
-                            <div class="card__body">
-                                <p>Core system settings and configuration options.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="card">
-                            <div class="card__header">
-                                <h3>Security Settings</h3>
-                            </div>
-                            <div class="card__body">
-                                <p>Security policies and access control management.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="card">
-                            <div class="card__header">
-                                <h3>Monitoring Tools</h3>
-                            </div>
-                            <div class="card__body">
-                                <p>Advanced monitoring and alerting configuration.</p>
-                            </div>
-                        </div>
-                    </div>
+            </div>
+            <div class="content-card">
+                <h2>Recent User Activity</h2>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>User ID</th>
+                                <th>Action</th>
+                                <th>Timestamp</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>user-123</td>
+                                <td>Logged In</td>
+                                <td>2025-12-16 10:30 AM</td>
+                            </tr>
+                            <tr>
+                                <td>user-456</td>
+                                <td>Added New Debt</td>
+                                <td>2025-12-16 10:28 AM</td>
+                            </tr>
+                            <tr>
+                                <td>user-789</td>
+                                <td>Made Payment</td>
+                                <td>2025-12-16 10:25 AM</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </main>
-    </div>
+    </section>
 
     <!-- Add Debt Modal -->
     <div id="add-debt-modal" class="modal hidden">
