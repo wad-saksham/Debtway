@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DebtWay</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Intro Page -->
+    <div id="intro-page" class="intro-page">
+        <nav class="intro-nav">
+            <div class="nav-brand">
+                <h1>DebtWay</h1>
+            </div>
+            <div class="nav-actions">
+                <button class="btn btn--outline" onclick="showLogin()">Sign In</button>
+            </div>
+        </nav>
+        
+        <main class="intro-main">
+            <div class="intro-content">
+                <div class="intro-text">
+                    <h1 class="intro-title">DebtWay</h1>
+                    <h2 class="intro-heading">Debt management made easier</h2>
+                    <p class="intro-description">Take control of your financial future with intelligent debt tracking, personalized insights, and automated payment reminders that help you become debt-free faster.</p>
+                    
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <span class="feature-icon">📊</span>
+                            <h3>Smart Tracking</h3>
+                            <p>Automated debt monitoring with AI-powered insights</p>
+                        </div>
+                        <div class="feature-card">
+                            <span class="feature-icon">📅</span>
+                            <h3>Payment Reminders</h3>
+                            <p>Never miss a payment with intelligent notifications</p>
+                        </div>
+                        <div class="feature-card">
+                            <span class="feature-icon">📈</span>
+                            <h3>Progress Analytics</h3>
+                            <p>Visualize your journey to becoming debt-free</p>
+                        </div>
+                        <div class="feature-card">
+                            <span class="feature-icon">🎯</span>
+                            <h3>Goal Planning</h3>
+                            <p>Create realistic payoff strategies tailored to you</p>
+                        </div>
+                    </div>
+                    
+                    <div class="intro-actions">
+                        <button class="btn btn--primary btn--lg" onclick="showSignup()">Get Started</button>
+                        <button class="btn btn--outline btn--lg" onclick="showLogin()">Sign In</button>
+                    </div>
+                </div>
+                
+                <div class="intro-preview">
+                    <div class="dashboard-preview">
+                        <div class="preview-header">
+                            <div class="preview-nav"></div>
+                            <div class="preview-nav"></div>
+                            <div class="preview-nav"></div>
+                        </div>
+                        <div class="preview-content">
+                            <div class="preview-metrics">
+                                <div class="preview-metric"></div>
+                                <div class="preview-metric"></div>
+                                <div class="preview-metric"></div>
+                            </div>
+                            <div class="preview-chart"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Auth Pages -->
+    <div id="login-page" class="auth-page hidden">
+        <div class="auth-container">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <h1>DebtWay</h1>
+                    <h2>Welcome Back</h2>
+                    <p>Sign in to your account to continue</p>
+                </div>
+                
+                <form id="login-form" class="auth-form">
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" id="login-email" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" id="login-password" class="form-control" required>
+                    </div>
+                    
+                    <div id="login-error" class="error-message hidden"></div>
+                    
+                    <button type="submit" class="btn btn--primary btn--full-width btn--lg">Sign In</button>
+                </form>
+                
+                <div class="auth-footer">
+                    <p>Don't have an account? <a href="#" onclick="showSignup()">Sign up</a></p>
+                    <p><a href="#" onclick="showIntro()">← Back to home</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="signup-page" class="auth-page hidden">
+        <div class="auth-container">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <h1>DebtWay</h1>
+                    <h2>Create Account</h2>
+                    <p>Join thousands taking control of their debt</p>
+                </div>
+                
+                <form id="signup-form" class="auth-form">
+                    <div class="form-group">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" id="signup-name" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" id="signup-email" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" id="signup-password" class="form-control" required minlength="6">
+                    </div>
+                    
+                    <div id="signup-error" class="error-message hidden"></div>
+                    
+                    <button type="submit" class="btn btn--primary btn--full-width btn--lg">Create Account</button>
+                </form>
+                
+                <div class="auth-footer">
+                    <p>Already have an account? <a href="#" onclick="showLogin()">Sign in</a></p>
+                    <p><a href="#" onclick="showIntro()">← Back to home</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- User Dashboard -->
+    <div id="user-dashboard" class="dashboard hidden">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1>DebtWay</h1>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-section="overview">
+                    <span>📊</span> Dashboard
+                </a>
+                <a href="#" class="nav-item" data-section="debts">
+                    <span>💳</span> My Debts
+                </a>
+                <a href="#" class="nav-item" data-section="payments">
+                    <span>💰</span> Payment Tracking
+                </a>
+                <a href="#" class="nav-item" data-section="documents">
+                    <span>📁</span> Document Vault
+                </a>
+                <a href="#" class="nav-item" data-section="goals">
+                    <span>🎯</span> Goal Planner
+                </a>
+                <a href="#" class="nav-item" data-section="reports">
+                    <span>📈</span> Reports
+                </a>
+                <a href="#" class="nav-item" data-section="insights">
+                    <span>🤖</span> AI Insights
+                </a>
+                <a href="#" class="nav-item" data-section="settings">
+                    <span>⚙️</span> Settings
+                </a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <button class="btn btn--outline btn--sm" onclick="logout()">Sign Out</button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="main-header">
+                <h1 id="section-title">Dashboard</h1>
+                <div class="user-info">
+                    <span id="user-greeting">Welcome back!</span>
+                </div>
+            </header>
+
+            <div class="content-area">
+                <!-- Overview Section -->
+                <div id="overview-section" class="section active">
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <h3>Total Debts</h3>
+                            <div class="metric-value" id="total-debts">0</div>
+                            <div class="metric-label">Active accounts</div>
+                        </div>
+                        <div class="metric-card">
+                            <h3>Outstanding Balance</h3>
+                            <div class="metric-value" id="total-outstanding">$0</div>
+                            <div class="metric-label">Total amount owed</div>
+                        </div>
+                        <div class="metric-card">
+                            <h3>Monthly EMI</h3>
+                            <div class="metric-value" id="monthly-emi">$0</div>
+                            <div class="metric-label">Next payment due</div>
+                        </div>
+                        <div class="metric-card">
+                            <h3>Payments Made</h3>
+                            <div class="metric-value" id="payments-made">0</div>
+                            <div class="metric-label">This month</div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-charts">
+                        <div class="chart-container" style="position: relative; height: 400px;">
+                            <h3>Payment Timeline</h3>
+                            <canvas id="payment-timeline-chart"></canvas>
+                        </div>
+                        
+                        <div class="chart-container" style="position: relative; height: 400px;">
+                            <h3>Debt Distribution</h3>
+                            <div id="debt-distribution-content">
+                                <canvas id="debt-distribution-chart"></canvas>
+                                <div id="debt-empty-state" class="empty-state">
+                                    <p>Add your first debt to see the distribution chart</p>
+                                    <button class="btn btn--primary" onclick="showSection('debts')">Add Debt</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="upcoming-payments">
+                        <h3>Upcoming Payments</h3>
+                        <div id="upcoming-payments-list" class="payments-list">
+                            <div class="empty-state">
+                                <p>No upcoming payments. Add your debts to track payment schedules.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Other Sections -->
+                <div id="debts-section" class="section">
+                    <div class="section-header">
+                        <h2>My Debts</h2>
+                        <button class="btn btn--primary" onclick="showAddDebtModal()">Add New Debt</button>
+                    </div>
+                    <div id="debts-list" class="debts-list">
+                        <div class="empty-state">
+                            <h3>No debts added yet</h3>
+                            <p>Start by adding your first debt to track your progress</p>
+                            <button class="btn btn--primary" onclick="showAddDebtModal()">Add Your First Debt</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="payments-section" class="section">
+                    <h2>Payment Tracking</h2>
+                    <div class="empty-state">
+                        <p>Track your debt payments here. Add debts first to start recording payments.</p>
+                    </div>
+                </div>
+
+                <div id="documents-section" class="section">
+                    <h2>Document Vault</h2>
+                    <div class="empty-state">
+                        <p>Securely store your loan documents and contracts here.</p>
+                    </div>
+                </div>
+
+                <div id="goals-section" class="section">
+                    <h2>Goal Planner</h2>
+                    <div class="empty-state">
+                        <p>Set and track your debt-free goals. Create personalized payoff strategies.</p>
+                    </div>
+                </div>
+
+                <div id="reports-section" class="section">
+                    <h2>Reports</h2>
+                    <div class="empty-state">
+                        <p>Generate detailed payment and debt reports. Add some data first to see reports.</p>
+                    </div>
+                </div>
+
+                <div id="insights-section" class="section">
+                    <h2>AI Insights</h2>
+                    <div class="empty-state">
+                        <p>Get AI-powered recommendations for your debt management strategy.</p>
+                    </div>
+                </div>
+
+                <div id="settings-section" class="section">
+                    <div class="settings-grid">
+                        <div class="card">
+                            <div class="card__header">
+                                <h3>Profile Settings</h3>
+                            </div>
+                            <div class="card__body">
+                                <div class="form-group">
+                                    <label class="form-label">Full Name</label>
+                                    <input type="text" id="profile-name" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" id="profile-email" class="form-control">
+                                </div>
+                                <button class="btn btn--primary">Update Profile</button>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card__header">
+                                <h3>Notification Settings</h3>
+                            </div>
+                            <div class="card__body">
+                                <div class="form-group">
+                                    <label>
+                                        <input type="checkbox" checked> Payment reminders
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <label>
+                                        <input type="checkbox" checked> Email notifications
+                                    </label>
+                                </div>
+                                <button class="btn btn--primary">Save Settings</button>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card__header">
+                                <h3>Security Settings</h3>
+                            </div>
+                            <div class="card__body">
+                                <button class="btn btn--outline">Change Password</button>
+                                <button class="btn btn--outline">Two-Factor Authentication</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div id="admin-dashboard" class="dashboard hidden">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1>DebtWay</h1>
+                <span class="admin-badge">Admin</span>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-section="admin-overview">
+                    <span>📊</span> System Overview
+                </a>
+                <a href="#" class="nav-item" data-section="user-management">
+                    <span>👥</span> User Management
+                </a>
+                <a href="#" class="nav-item" data-section="portfolio-analytics">
+                    <span>💼</span> Portfolio Analytics
+                </a>
+                <a href="#" class="nav-item" data-section="ai-performance">
+                    <span>🤖</span> AI Performance
+                </a>
+                <a href="#" class="nav-item" data-section="communications">
+                    <span>📧</span> Communications
+                </a>
+                <a href="#" class="nav-item" data-section="system-health">
+                    <span>🔧</span> System Health
+                </a>
+                <a href="#" class="nav-item" data-section="admin-settings">
+                    <span>⚙️</span> Settings
+                </a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <button class="btn btn--outline btn--sm" onclick="logout()">Sign Out</button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="main-header">
+                <h1 id="admin-section-title">System Overview</h1>
+                <div class="admin-info">
+                    <span>Admin Dashboard</span>
+                </div>
+            </header>
+
+            <div class="content-area">
+                <!-- Admin Overview -->
+                <div id="admin-overview-section" class="section active">
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <h3>Total Users</h3>
+                            <div class="metric-value" id="admin-total-users">0</div>
+                            <div class="metric-label">Registered accounts</div>
+                        </div>
+                        <div class="metric-card">
+                            <h3>Active Portfolio</h3>
+                            <div class="metric-value" id="admin-portfolio">$0</div>
+                            <div class="metric-label">Total debt tracked</div>
+                        </div>
+                        <div class="metric-card">
+                            <h3>Active Debts</h3>
+                            <div class="metric-value" id="admin-debts">0</div>
+                            <div class="metric-label">Being tracked</div>
+                        </div>
+                        <div class="metric-card">
+                            <h3>System Health</h3>
+                            <div class="metric-value status--success">99.9%</div>
+                            <div class="metric-label">Uptime</div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-charts">
+                        <div class="chart-container" style="position: relative; height: 400px;">
+                            <h3>User Growth</h3>
+                            <canvas id="user-growth-chart"></canvas>
+                        </div>
+                        
+                        <div class="chart-container" style="position: relative; height: 400px;">
+                            <h3>Portfolio Distribution</h3>
+                            <canvas id="admin-portfolio-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Other Admin Sections -->
+                <div id="user-management-section" class="section">
+                    <div class="section-header">
+                        <h2>User Management</h2>
+                    </div>
+                    <div id="users-table" class="users-table">
+                        <div class="empty-state">
+                            <p id="users-empty-message">Loading user data...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="portfolio-analytics-section" class="section">
+                    <h2>Portfolio Analytics</h2>
+                    <div class="analytics-content">
+                        <p>Real-time portfolio performance and debt analytics across all users.</p>
+                    </div>
+                </div>
+
+                <div id="ai-performance-section" class="section">
+                    <h2>AI Performance</h2>
+                    <div class="ai-metrics">
+                        <p>AI model accuracy and recommendation performance metrics.</p>
+                    </div>
+                </div>
+
+                <div id="communications-section" class="section">
+                    <h2>Communications</h2>
+                    <div class="communications-tools">
+                        <p>System announcements and email template management.</p>
+                    </div>
+                </div>
+
+                <div id="system-health-section" class="section">
+                    <h2>System Health</h2>
+                    <div class="system-metrics">
+                        <p>Platform monitoring, performance metrics, and system status.</p>
+                    </div>
+                </div>
+
+                <div id="admin-settings-section" class="section">
+                    <h2>Admin Settings</h2>
+                    <div class="admin-settings-grid">
+                        <div class="card">
+                            <div class="card__header">
+                                <h3>System Configuration</h3>
+                            </div>
+                            <div class="card__body">
+                                <p>Core system settings and configuration options.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card__header">
+                                <h3>Security Settings</h3>
+                            </div>
+                            <div class="card__body">
+                                <p>Security policies and access control management.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card__header">
+                                <h3>Monitoring Tools</h3>
+                            </div>
+                            <div class="card__body">
+                                <p>Advanced monitoring and alerting configuration.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Add Debt Modal -->
+    <div id="add-debt-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add New Debt</h2>
+                <button class="modal-close" onclick="hideAddDebtModal()">&times;</button>
+            </div>
+            <form id="add-debt-form" class="modal-body">
+                <div class="form-group">
+                    <label class="form-label">Debt Name</label>
+                    <input type="text" id="debt-name" class="form-control" placeholder="e.g., Credit Card, Student Loan" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Total Amount</label>
+                    <input type="number" id="debt-amount" class="form-control" placeholder="0.00" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Interest Rate (%)</label>
+                    <input type="number" id="debt-interest" class="form-control" placeholder="0.00" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Monthly Payment</label>
+                    <input type="number" id="debt-payment" class="form-control" placeholder="0.00" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Debt Type</label>
+                    <select id="debt-type" class="form-control" required>
+                        <option value="">Select type</option>
+                        <option value="credit-card">Credit Card</option>
+                        <option value="student-loan">Student Loan</option>
+                        <option value="personal-loan">Personal Loan</option>
+                        <option value="auto-loan">Auto Loan</option>
+                        <option value="mortgage">Mortgage</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn--outline" onclick="hideAddDebtModal()">Cancel</button>
+                    <button type="submit" class="btn btn--primary">Add Debt</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
