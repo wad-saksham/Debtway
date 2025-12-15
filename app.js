@@ -53,6 +53,17 @@ function setupEventListeners() {
         addDebtForm.addEventListener('submit', handleAddDebt);
     }
     
+    // Logout buttons
+    const userLogoutBtn = document.getElementById('user-logout-btn');
+    const adminLogoutBtn = document.getElementById('admin-logout-btn');
+    
+    if (userLogoutBtn) {
+        userLogoutBtn.addEventListener('click', logout);
+    }
+    if (adminLogoutBtn) {
+        adminLogoutBtn.addEventListener('click', logout);
+    }
+    
     // Navigation
     document.querySelectorAll('.nav-item').forEach(item => {
         item.addEventListener('click', handleNavigation);
@@ -72,12 +83,20 @@ function setupEventListeners() {
 // Page Navigation Functions - These need to be global
 window.showIntro = function() {
     hideAllPages();
-    document.getElementById('intro-page').classList.remove('hidden');
+    const introPage = document.getElementById('intro-page');
+    if (introPage) {
+        introPage.style.display = 'block';
+        setTimeout(() => introPage.classList.add('visible'), 10);
+    }
 };
 
 window.showLogin = function() {
     hideAllPages();
-    document.getElementById('login-page').classList.remove('hidden');
+    const loginPage = document.getElementById('login-page');
+    if (loginPage) {
+        loginPage.classList.remove('hidden');
+        loginPage.style.display = 'flex';
+    }
     const emailInput = document.getElementById('login-email');
     if (emailInput) {
         setTimeout(() => emailInput.focus(), 100);
@@ -86,7 +105,11 @@ window.showLogin = function() {
 
 window.showSignup = function() {
     hideAllPages();
-    document.getElementById('signup-page').classList.remove('hidden');
+    const signupPage = document.getElementById('signup-page');
+    if (signupPage) {
+        signupPage.classList.remove('hidden');
+        signupPage.style.display = 'flex';
+    }
     const nameInput = document.getElementById('signup-name');
     if (nameInput) {
         setTimeout(() => nameInput.focus(), 100);
@@ -95,7 +118,11 @@ window.showSignup = function() {
 
 window.showUserDashboard = function() {
     hideAllPages();
-    document.getElementById('user-dashboard').classList.remove('hidden');
+    const userDashboard = document.getElementById('user-dashboard');
+    if (userDashboard) {
+        userDashboard.style.display = 'flex';
+        setTimeout(() => userDashboard.classList.add('visible'), 10);
+    }
     updateUserDashboard();
     setTimeout(() => {
         initializeUserCharts();
@@ -104,7 +131,11 @@ window.showUserDashboard = function() {
 
 window.showAdminDashboard = function() {
     hideAllPages();
-    document.getElementById('admin-dashboard').classList.remove('hidden');
+    const adminDashboard = document.getElementById('admin-dashboard');
+    if (adminDashboard) {
+        adminDashboard.style.display = 'flex';
+        setTimeout(() => adminDashboard.classList.add('visible'), 10);
+    }
     updateAdminDashboard();
     setTimeout(() => {
         initializeAdminCharts();
@@ -187,6 +218,8 @@ function hideAllPages() {
         const element = document.getElementById(pageId);
         if (element) {
             element.classList.add('hidden');
+            element.classList.remove('visible');
+            element.style.display = 'none';
         }
     });
 }
@@ -298,7 +331,12 @@ function showWelcomeMessage(message) {
 function updateUserDashboard() {
     if (!currentUser) return;
 
-    // Update greeting
+    // Update greeting in dashboard header
+    const dashboardHeader = document.querySelector('#user-dashboard .dashboard-header h1');
+    if (dashboardHeader) {
+        dashboardHeader.textContent = `Welcome, ${currentUser.name}`;
+    }
+    
     const greetingElement = document.getElementById('user-greeting');
     if (greetingElement) {
         greetingElement.textContent = `Welcome back, ${currentUser.name}!`;
