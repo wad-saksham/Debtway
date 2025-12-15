@@ -2,9 +2,10 @@
 
 > **Complete Setup Guide for Local Development**
 
-## 📋 **What You Have**
+## 📋 **Features**
 
-Your DebtWay platform includes:
+The DebtWay platform includes:
+
 - **Users**: Can sign up and manage personal debts
 - **Admin**: Single admin account for system oversight
 - **Database Integration**: Simulated database with authentication
@@ -12,29 +13,28 @@ Your DebtWay platform includes:
 - **AI Insights**: Debt management recommendations
 - **Professional Design**: Enterprise-grade user interface
 
-## 🎯 **Live Demo First**
-
-**✅ [Try DebtWay Live](https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/45c5b3a582f0767201391288d074bbbe/02befe3e-7b41-417b-bf26-a8fc5dd4d4fd/index.html)**
-
 **Admin Credentials:**
+
 - Email: `admin@debtway.com`
 - Password: `admin123`
 
 ## 🏗️ **Local Setup Instructions**
 
 ### **Step 1: Download Files**
-1. Download these 3 files to your computer:
+
+1. Download these 3 files:
    - `index.html`
    - `style.css`
    - `app.js`
 
 ### **Step 2: Create Project Folder**
+
 ```bash
 # Create project directory
 mkdir debtway-platform
 cd debtway-platform
 
-# Place your downloaded files here:
+# Place the downloaded files here:
 # debtway-platform/
 # ├── index.html
 # ├── style.css
@@ -42,22 +42,25 @@ cd debtway-platform
 ```
 
 ### **Step 3: VS Code Setup**
+
 1. **Open VS Code**
-2. **Open Folder**: `File` → `Open Folder` → Select your `debtway-platform` folder
+2. **Open Folder**: `File` → `Open Folder` → Select the `debtway-platform` folder
 3. **Install Live Server Extension**:
    - Go to Extensions (`Ctrl+Shift+X`)
    - Search for "Live Server"
    - Install "Live Server" by Ritwick Dey
 
 ### **Step 4: Run Locally**
+
 1. **Right-click** on `index.html` in VS Code
 2. **Select** "Open with Live Server"
-3. **Your browser** will open automatically
+3. **The browser** will open automatically
 4. **Access** at `http://localhost:5500` or similar
 
 ### **Alternative Methods**
 
 #### **Method 1: Python Server**
+
 ```bash
 # Navigate to project folder
 cd debtway-platform
@@ -69,6 +72,7 @@ python -m http.server 8000
 ```
 
 #### **Method 2: Node.js Server**
+
 ```bash
 # Install http-server globally
 npm install -g http-server
@@ -83,6 +87,7 @@ http-server -p 8000
 ```
 
 #### **Method 3: Simple File Access**
+
 - **Double-click** `index.html` file
 - **Opens** in your default browser
 - **Works** but some features may be limited
@@ -90,16 +95,19 @@ http-server -p 8000
 ## 🔐 **Authentication System**
 
 ### **Admin Access:**
+
 - **Email**: `admin@debtway.com`
 - **Password**: `admin123`
 
 ### **User Access:**
+
 - **Sign Up**: Create new user account
 - **Sign In**: Use created credentials
 
 ### **Features by Role:**
 
 #### **👤 User Features:**
+
 - Add and manage personal debts
 - Track payments and EMI schedules
 - Upload and store documents
@@ -108,6 +116,7 @@ http-server -p 8000
 - Personal dashboard analytics
 
 #### **🔧 Admin Features:**
+
 - View all user accounts
 - System-wide portfolio analytics
 - AI performance monitoring
@@ -118,6 +127,7 @@ http-server -p 8000
 ## 📊 **How to Use**
 
 ### **For New Users:**
+
 1. **Visit** the intro page
 2. **Click** "Get Started"
 3. **Fill** signup form
@@ -126,11 +136,13 @@ http-server -p 8000
 6. **Access** personal debt dashboard
 
 ### **For Admin:**
+
 1. **Click** "Sign In" on intro page
 2. **Use admin credentials** above
 3. **Access** system-wide admin dashboard
 
 ### **Key Features:**
+
 - ✅ **No buffering** - Instant loading
 - ✅ **Separate pages** - Intro, login, signup, dashboard
 - ✅ **Database verification** - Real authentication
@@ -140,24 +152,28 @@ http-server -p 8000
 ## 🚀 **Deployment Options**
 
 ### **Option 1: GitHub Pages (Free)**
+
 1. **Create** GitHub repository
-2. **Upload** your files
+2. **Upload** the files
 3. **Enable** GitHub Pages in repository settings
 4. **Access** via `https://username.github.io/repository-name`
 
 ### **Option 2: Netlify (Free)**
+
 1. **Visit** [netlify.com](https://netlify.com)
-2. **Drag and drop** your project folder
+2. **Drag and drop** the project folder
 3. **Get** instant live URL
-4. **Updates** automatically when you change files
+4. **Updates** automatically when files are changed
 
 ### **Option 3: Vercel (Free)**
+
 1. **Visit** [vercel.com](https://vercel.com)
 2. **Connect** GitHub repository
 3. **Deploy** automatically
 4. **Get** production URL
 
 ### **Option 4: Firebase Hosting (Free)**
+
 ```bash
 # Install Firebase CLI
 npm install -g firebase-tools
@@ -175,6 +191,7 @@ firebase deploy
 ## 🛠️ **Development Tips**
 
 ### **VS Code Extensions:**
+
 - **Live Server**: For local development
 - **Prettier**: Code formatting
 - **Auto Rename Tag**: HTML productivity
@@ -182,12 +199,14 @@ firebase deploy
 - **GitLens**: Git integration
 
 ### **Chrome DevTools:**
+
 - **F12**: Open developer tools
 - **Console**: Check for JavaScript errors
 - **Network**: Monitor loading performance
 - **Application**: Check local storage
 
 ### **Customization:**
+
 - **Colors**: Edit CSS variables in `style.css`
 - **Features**: Add new functions in `app.js`
 - **Layout**: Modify HTML structure in `index.html`
@@ -196,25 +215,28 @@ firebase deploy
 ## 🎨 **Customization Guide**
 
 ### **Change Branding:**
+
 ```css
 /* In style.css, update these variables: */
 :root {
-  --primary-600: #your-brand-color;
-  --primary-700: #your-darker-brand-color;
+  --primary-600: #brand-color;
+  --primary-700: #darker-brand-color;
 }
 ```
 
 ### **Add New Features:**
+
 ```javascript
 // In app.js, add new functions:
 function addNewDebt(debtData) {
-    // Your custom logic
-    this.database.debts.push(debtData);
-    this.renderDebtsSection();
+  // Custom logic
+  this.database.debts.push(debtData);
+  this.renderDebtsSection();
 }
 ```
 
 ### **Modify Navigation:**
+
 ```html
 <!-- In index.html, add new nav items: -->
 <li><a href="#" class="nav-link" data-section="new-section">New Section</a></li>
@@ -225,26 +247,31 @@ function addNewDebt(debtData) {
 ### **Common Issues:**
 
 #### **Page Won't Load:**
+
 - Check if all 3 files are in same folder
 - Ensure file names are exactly: `index.html`, `style.css`, `app.js`
 - Try different browser (Chrome, Firefox, Edge)
 
 #### **Features Not Working:**
+
 - Open browser console (F12)
 - Check for JavaScript errors
 - Ensure internet connection (for Chart.js CDN)
 
 #### **Authentication Issues:**
+
 - Use exact admin credentials
 - Check for typos in email/password
 - Clear browser cache
 
 #### **Charts Not Displaying:**
+
 - Check internet connection
 - Ensure Chart.js CDN is loading
 - Open console for specific errors
 
 ### **Browser Compatibility:**
+
 - ✅ **Chrome 70+**
 - ✅ **Firefox 65+**
 - ✅ **Safari 12+**
@@ -253,6 +280,7 @@ function addNewDebt(debtData) {
 ## 📱 **Mobile Responsive**
 
 The platform is fully responsive and works on:
+
 - 📱 **Mobile phones** (320px+)
 - 📱 **Tablets** (768px+)
 - 💻 **Laptops** (1024px+)
@@ -261,7 +289,9 @@ The platform is fully responsive and works on:
 ## 🔧 **Advanced Features**
 
 ### **Database Integration:**
+
 Replace simulated database with real backend:
+
 ```javascript
 // Replace in app.js
 async handleLogin(e) {
@@ -276,17 +306,21 @@ async handleLogin(e) {
 ```
 
 ### **Real-time Updates:**
+
 Add WebSocket connection:
+
 ```javascript
-const socket = new WebSocket('ws://localhost:8080');
+const socket = new WebSocket("ws://localhost:8080");
 socket.onmessage = (event) => {
-    const data = JSON.parse(event.data);
-    this.updateDashboard(data);
+  const data = JSON.parse(event.data);
+  this.updateDashboard(data);
 };
 ```
 
 ### **File Upload:**
+
 Add document upload functionality:
+
 ```javascript
 async uploadDocument(file) {
     const formData = new FormData();
@@ -303,6 +337,7 @@ async uploadDocument(file) {
 ## 📞 **Support**
 
 If you need help:
+
 1. **Check** this README first
 2. **Open** browser console for error messages
 3. **Try** different browsers
@@ -311,7 +346,8 @@ If you need help:
 
 ## ✨ **Success!**
 
-You now have a complete debt management platform with:
+This is a complete debt management platform with:
+
 - ✅ **Professional UI** with role-based access
 - ✅ **User registration** and authentication
 - ✅ **Admin oversight** capabilities
